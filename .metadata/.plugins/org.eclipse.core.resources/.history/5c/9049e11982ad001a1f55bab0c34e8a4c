@@ -8,8 +8,8 @@ public class Principal {
 		guerra.bim3 = 80;
 		guerra.bim4 = 75;
 		
-		System.out.println(guerra.media());
-		System.out.println(guerra.passouDeAno());
+		System.out.println(VerificadoraNotas.mediaAluno(guerra));
+		System.out.println(VerificadoraNotas.passouDeAno(guerra));
 
 	}
 

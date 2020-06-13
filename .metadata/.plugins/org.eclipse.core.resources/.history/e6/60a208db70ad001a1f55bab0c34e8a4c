@@ -1,0 +1,17 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TesteRegistroPontos {
+
+	@Test
+	public void pontosCriarTopico() {
+		Usuario u = new Usuario();
+		u.nome = "Guerra";
+		CalculadoraBonus cb = new CalculadoraBonus();
+		RegsistroPontos rp = new RegsistroPontos(cb);
+		rp.criarUmTopico(u);
+		assertEquals(u.pontos, 5);
+	}
+
+}

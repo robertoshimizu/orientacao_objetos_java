@@ -1,0 +1,10 @@
+2020-06-13 07:16:01,490 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
+2020-06-13 07:17:39,733 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @161912ms to org.eclipse.jetty.util.log.Slf4jLog
+2020-06-13 07:17:39,815 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.27.v20200227; built: 2020-03-02T14:40:42.212Z; git: a304fd9f351f337e7c0e2a7c28878dd536149c6c; jvm 1.8.0_251-b08
+2020-06-13 07:17:39,830 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2020-06-13 07:17:39,830 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2020-06-13 07:17:39,830 [Start Help Server] INFO  org.eclipse.jetty.server.session - node0 Scavenging every 660000ms
+2020-06-13 07:17:39,851 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@317b398e{/help,null,AVAILABLE}
+2020-06-13 07:17:39,859 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@59cee2c6{HTTP/1.1, (http/1.1)}{127.0.0.1:50363}
+2020-06-13 07:17:39,859 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @162040ms
+2020-06-13 07:17:39,860 [Start Help Server] INFO  org.eclipse.jetty.server.session - node0 Scavenging every 726000ms

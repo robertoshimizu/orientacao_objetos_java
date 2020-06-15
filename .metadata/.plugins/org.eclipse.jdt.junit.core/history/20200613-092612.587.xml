@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TesteRegistroPontos" project="Bonificacao" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="TesteRegistroPontos" time="0.014" uniqueid="[engine:junit-jupiter]/[class:TesteRegistroPontos]">
-    <testcase name="pontosCriarTopicoBonusDoDia" classname="TesteRegistroPontos" time="0.006" displayname="pontosCriarTopicoBonusDoDia()" uniqueid="[engine:junit-jupiter]/[class:TesteRegistroPontos]/[method:pontosCriarTopicoBonusDoDia()]"/>
-    <testcase name="pontosCriarTopicoVIP" classname="TesteRegistroPontos" time="0.001" displayname="pontosCriarTopicoVIP()" uniqueid="[engine:junit-jupiter]/[class:TesteRegistroPontos]/[method:pontosCriarTopicoVIP()]"/>
-    <testcase name="pontosCriarTopico" classname="TesteRegistroPontos" time="0.007" displayname="pontosCriarTopico()" uniqueid="[engine:junit-jupiter]/[class:TesteRegistroPontos]/[method:pontosCriarTopico()]"/>
-  </testsuite>
-</testrun>

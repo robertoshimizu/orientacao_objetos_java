@@ -10,6 +10,8 @@ public class Principal {
 		
 		System.out.println(VerificadoraNotas.mediaAluno(guerra));
 		System.out.println(VerificadoraNotas.passouDeAno(guerra));
+		
+		
 
 	}
 

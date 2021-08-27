@@ -1,22 +1,59 @@
 
 public class JogoIniciante implements MecanicaDoJogo {
 	
-	Embaralhador embaralhador;
+	private Embaralhador embaralhador;
+	private BancoDePalavras bancoPalavras;
+	private String palavraEmbaralhada;
+	private String novaPalavra;
 	
-	int points;
+	public int points;
+	public int rodada;
+	public int attempt;
+	public boolean jogoEmAndamento = false;
 
 	@Override
 	public String apresentacao() {
 		
-			return "Jogo Iniciante";
+		String message = "\n Neste Jogo vc vai receber uma palavra embaralhada e terá 3 tentativas para decifrá-la \n Se acertar vc ganha 10 pontos. Você terá três rodadas \n Boa Sorte!";
+		
+		return message;
 	
 
 	}
 
 	@Override
-	public void iniciar() {
-		this.points = 0;
+	public void iniciar() {		
+		points = 0;
+		rodada = 1;
+		jogoEmAndamento = true;
+		bancoPalavras = new BancoDePalavras();	
+		embaralhador = new BaralhoRandomico();
+	}
+
+	public int getRodada() {
+		return rodada;
+	}
+
+	public int getTentativa() {
+		return attempt;
+	}
+
+	public boolean isJogoEmAndamento() {
+		return jogoEmAndamento;
+	}
+
+	public String pegaNovaPalavra() {	
+		attempt = 1;
+		novaPalavra = bancoPalavras.novaPalavra();		
+		palavraEmbaralhada = embaralhador.embaralhaPalavra(novaPalavra);
+		return palavraEmbaralhada;
+	}
+
+	
+
+	public String mostraNovaPalavra() {
 		
+		return pegaNovaPalavra();
 	}
 
 	@Override
@@ -26,9 +63,21 @@ public class JogoIniciante implements MecanicaDoJogo {
 	}
 
 	@Override
-	public boolean verificar(String string) {
-		// TODO Auto-generated method stub
-		return false;
+	public String verificar(String tentativa) {
+		if (tentativa.equals(novaPalavra)) {			
+			points = points + 10;
+			rodada = rodada + 1;
+			if (rodada > 3) {
+				jogoEmAndamento = false;
+			}
+			attempt = 5;
+			return "Acertou!! Você ganhou 10 pontos.";
+		}
+		else { 
+			attempt = attempt + 1;
+			return "Você errou!! - Não desanime";
+			
+		}
 	}
 
 }

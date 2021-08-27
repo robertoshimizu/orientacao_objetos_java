@@ -26,8 +26,16 @@ class MecanicaJogo_test {
 	@DisplayName("VerificacaoPalavra")
 	void testVerificarPalavra() {		
 		MecanicaDoJogo sut = new JogoIniciante();
-		boolean result = sut.verificar("palavra");		
-		assertEquals(result, false);
+		String result = sut.verificar("qq");		
+		assertEquals(result, "qq");
+	}
+	
+	@Test
+	@DisplayName("Pega Nova Palavra no arquivo")
+	void testPegaNovaPalavra() {		
+		MecanicaDoJogo sut = new JogoIniciante();
+		sut.iniciar();
+		assertNotNull(sut.mostraNovaPalavra());
 	}
 
 }

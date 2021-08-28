@@ -1,33 +1,35 @@
 
 public class JogoIniciante implements MecanicaDoJogo {
 	
-	private Embaralhador embaralhador;
-	private BancoDePalavras bancoPalavras;
-	private String palavraEmbaralhada;
-	private String novaPalavra;
+	BancoDePalavras bancoPalavras;
+	FabricaEmbaralhador factory;
 	
+	public JogoIniciante(BancoDePalavras bancoPalavras,FabricaEmbaralhador factory) {
+		this.bancoPalavras = bancoPalavras;
+		this.factory = factory;
+	}
+	
+	private Embaralhador embaralhador;
+	
+	private String palavraEmbaralhada;
+	private String novaPalavra;	
 	public int points;
 	public int rodada;
 	public int attempt;
 	public boolean jogoEmAndamento = false;
 
 	@Override
-	public String apresentacao() {
-		
+	public String apresentacao() {		
 		String message = "\n Neste Jogo vc vai receber uma palavra embaralhada e terá 3 tentativas para decifrá-la \n Se acertar vc ganha 10 pontos. Você terá três rodadas \n Boa Sorte!";
-		
 		return message;
-	
-
 	}
 
 	@Override
 	public void iniciar() {		
 		points = 0;
 		rodada = 1;
-		jogoEmAndamento = true;
-		bancoPalavras = new BancoDePalavras();	
-		embaralhador = new BaralhoRandomico();
+		jogoEmAndamento = true;		
+		embaralhador = factory.createBaralho(1);
 	}
 
 	public int getRodada() {
@@ -49,10 +51,7 @@ public class JogoIniciante implements MecanicaDoJogo {
 		return palavraEmbaralhada;
 	}
 
-	
-
-	public String mostraNovaPalavra() {
-		
+	public String mostraNovaPalavra() {		
 		return pegaNovaPalavra();
 	}
 

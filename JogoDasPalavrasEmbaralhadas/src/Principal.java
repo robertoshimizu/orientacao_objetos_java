@@ -24,7 +24,9 @@ public class Principal {
         
 		System.out.println("Nivel Selecionado: "+ nivelSelec);
 		
-        MecanicaDoJogo jogo =  new JogoIniciante();
+        FabricaMecanicaDoJogo fabrica =  new FabricaMecanicaDoJogo();
+        MecanicaDoJogo jogo = fabrica.createJogo(nivel);
+        
         jogo.iniciar();
         System.out.println(jogo.apresentacao());        
         System.out.println("");

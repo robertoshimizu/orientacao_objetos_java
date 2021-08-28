@@ -1,5 +1,5 @@
 
-public interface MecanicaDoJogo {
+public interface MecanicaDoJogo {	
 	
 	public String apresentacao();
 

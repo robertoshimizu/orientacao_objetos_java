@@ -8,16 +8,36 @@ class MecanicaJogo_test {
 	
 	
 	@Test
+	@DisplayName("Testar a Fabrica Mecanica do Jogo")
+	void testFabricaJogo() {		
+		FabricaMecanicaDoJogo fabrica = new FabricaMecanicaDoJogo();
+		MecanicaDoJogo jogo = fabrica.createJogo(1);
+		assertNotNull(jogo.apresentacao());
+	}
+	
+	@Test
+	@DisplayName("Testar a Fabrica Embaralhador")
+	void testFabricaEmbaralhador() {				
+		FabricaEmbaralhador factory = new FabricaEmbaralhador();
+		Embaralhador embaralhador = factory.createBaralho(1);
+		String palavraEmbaralhada = embaralhador.embaralhaPalavra("ANAGRAMA");
+		assertEquals(palavraEmbaralhada, "AMARGANA");		
+		
+	}
+	
+	@Test
 	@DisplayName("Apresentacao")
 	void testApresentacao() {		
-		MecanicaDoJogo sut = new JogoIniciante();
-		assertEquals(sut.apresentacao(),"Jogo Iniciante");
+		FabricaMecanicaDoJogo fabrica = new FabricaMecanicaDoJogo();
+		MecanicaDoJogo sut = fabrica.createJogo(1);
+		assertNotNull(sut.apresentacao());
 	}
 	
 	@Test
 	@DisplayName("Iniciar")
 	void testInicializacao() {		
-		MecanicaDoJogo sut = new JogoIniciante();
+		FabricaMecanicaDoJogo fabrica = new FabricaMecanicaDoJogo();
+		MecanicaDoJogo sut = fabrica.createJogo(1);
 		sut.iniciar();		
 		assertEquals(sut.getPoints(),0);
 	}
@@ -25,15 +45,17 @@ class MecanicaJogo_test {
 	@Test
 	@DisplayName("VerificacaoPalavra")
 	void testVerificarPalavra() {		
-		MecanicaDoJogo sut = new JogoIniciante();
+		FabricaMecanicaDoJogo fabrica = new FabricaMecanicaDoJogo();
+		MecanicaDoJogo sut = fabrica.createJogo(1);
 		String result = sut.verificar("qq");		
-		assertEquals(result, "qq");
+		assertEquals(result, "Você errou!! - Não desanime");
 	}
 	
 	@Test
 	@DisplayName("Pega Nova Palavra no arquivo")
 	void testPegaNovaPalavra() {		
-		MecanicaDoJogo sut = new JogoIniciante();
+		FabricaMecanicaDoJogo fabrica = new FabricaMecanicaDoJogo();
+		MecanicaDoJogo sut = fabrica.createJogo(1);
 		sut.iniciar();
 		assertNotNull(sut.mostraNovaPalavra());
 	}

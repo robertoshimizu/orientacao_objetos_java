@@ -1,9 +1,10 @@
 
 public class FabricaMecanicaDoJogo {
+
 	BancoDePalavras bancoPalavras;
 	FabricaEmbaralhador factory;
-	
-	public FabricaMecanicaDoJogo(){
+
+	public FabricaMecanicaDoJogo() {
 		this.factory = new FabricaEmbaralhador();
 		this.bancoPalavras = new BancoDePalavras();
 	}
@@ -13,7 +14,8 @@ public class FabricaMecanicaDoJogo {
 		if (nivel == 1) {
 			jogo = new JogoIniciante(bancoPalavras, factory);
 		}
-		
+
 		return jogo;
 	}
+
 }

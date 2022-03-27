@@ -1,58 +1,69 @@
 
 public class JogoIniciante implements MecanicaDoJogo {
-	
+
 	BancoDePalavras bancoPalavras;
 	FabricaEmbaralhador factory;
-	
-	public JogoIniciante(BancoDePalavras bancoPalavras,FabricaEmbaralhador factory) {
+
+	public JogoIniciante(BancoDePalavras bancoPalavras, FabricaEmbaralhador factory) {
 		this.bancoPalavras = bancoPalavras;
 		this.factory = factory;
 	}
-	
+
 	private Embaralhador embaralhador;
-	
+
 	private String palavraEmbaralhada;
-	private String novaPalavra;	
+	private String novaPalavra;
 	public int points;
 	public int rodada;
 	public int attempt;
 	public boolean jogoEmAndamento = false;
+	public boolean rodadaEmAndamento = false;
 
 	@Override
-	public String apresentacao() {		
+	public String apresentacao() {
 		String message = "\n Neste Jogo vc vai receber uma palavra embaralhada e terá 3 tentativas para decifrá-la \n Se acertar vc ganha 10 pontos. Você terá três rodadas \n Boa Sorte!";
 		return message;
 	}
 
 	@Override
-	public void iniciar() {		
-		points = 0;
-		rodada = 1;
-		jogoEmAndamento = true;		
-		embaralhador = factory.createBaralho(1);
+	public void iniciar() {
+		this.points = 0;
+		this.rodada = 1;
+		this.jogoEmAndamento = true;
+		this.attempt = 1;
+		this.rodadaEmAndamento = true;
+		embaralhador = factory.createBaralho();
 	}
 
 	public int getRodada() {
-		return rodada;
+		return this.rodada;
 	}
 
 	public int getTentativa() {
-		return attempt;
+		return this.attempt;
 	}
 
 	public boolean isJogoEmAndamento() {
-		return jogoEmAndamento;
+		return this.jogoEmAndamento;
 	}
 
-	public String pegaNovaPalavra() {	
-		attempt = 1;
-		novaPalavra = bancoPalavras.novaPalavra();		
-		palavraEmbaralhada = embaralhador.embaralhaPalavra(novaPalavra);
-		return palavraEmbaralhada;
+	public boolean isRodadaEmAndamento() {
+		return this.rodadaEmAndamento;
 	}
 
-	public String mostraNovaPalavra() {		
-		return pegaNovaPalavra();
+	public void pegaNovaPalavraEmbaralhada() {
+		this.rodadaEmAndamento = true;
+		this.novaPalavra = bancoPalavras.novaPalavra();
+		this.palavraEmbaralhada = embaralhador.embaralhaPalavra(novaPalavra);
+
+	}
+
+	public String mostraPalavraEmbaralhada() {
+		return this.palavraEmbaralhada;
+	}
+
+	public String mostraPalavraOriginal() {
+		return this.novaPalavra;
 	}
 
 	@Override
@@ -63,19 +74,27 @@ public class JogoIniciante implements MecanicaDoJogo {
 
 	@Override
 	public String verificar(String tentativa) {
-		if (tentativa.equals(novaPalavra)) {			
-			points = points + 10;
-			rodada = rodada + 1;
-			if (rodada > 3) {
-				jogoEmAndamento = false;
+		if (tentativa.equals(novaPalavra)) {
+			this.points = this.points + 10;
+			this.rodada = this.rodada + 1;
+			this.attempt = 1;
+			this.rodadaEmAndamento = false;
+			if (this.rodada > 3) {
+
+				this.jogoEmAndamento = false;
 			}
-			attempt = 5;
 			return "Acertou!! Você ganhou 10 pontos.";
-		}
-		else { 
-			attempt = attempt + 1;
-			return "Você errou!! - Não desanime";
-			
+		} else {
+			this.attempt = this.attempt + 1;
+			if (this.attempt > 3) {
+				this.rodadaEmAndamento = false;
+				this.attempt = 1;
+				this.rodada = this.rodada + 1;
+				return "Você errou!! - Rodada Finalizada - A palavra certa era: " + this.mostraPalavraOriginal();
+			} else {
+				return "Você errou!! - Não desanime";
+			}
+
 		}
 	}
 
